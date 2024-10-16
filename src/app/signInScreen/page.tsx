@@ -27,9 +27,9 @@ export default function SignInScreen() {
         <SplashScreen />
       ) : (
         <div className="min-h-screen flex flex-col items-center justify-center bg-slate p-4">
-          <p className="text-xl text-blue-700  mb-7">Tutor Connect</p>
+          <p className="text-xl text-blue-700  mb-20">Tutor Connect</p>
           <h1 className="text-3xl font-bold mb-2">Acesse sua conta</h1>
-          <p className="mb-5">
+          <p className="mb-10">
             Novo por aqui?{" "}
             <a
               href="#"
