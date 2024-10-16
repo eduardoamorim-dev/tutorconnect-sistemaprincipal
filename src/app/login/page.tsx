@@ -1,40 +1,55 @@
-export default function Login() {
+"use client";
+
+import { useForm } from "react-hook-form";
+
+export default function SignUpScreen() {
+  const { handleSubmit: hookFormHandleSubmit, register } = useForm();
+
+  const handleSubmit = hookFormHandleSubmit((data) => {
+    console.log("Formulário submetido");
+  });
+
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="p-8 rounded-lg w-96 mb-3">
-        <div flex-col items-center mb-6 text-center>
-          <h1>Tutor Connect</h1>
-        </div>
-        <header className="flex flex-col items-center mb-6 text-center">
-          <h1 className="text-2xl font-bold text-gray-900">
-            Entre em sua conta
-          </h1>
-          <p className="text-gray-700">Novo por aqui? Crie uma conta</p>
-        </header>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-sky-700 p-4">
+      <h1 className="text-3xl font-bold text-white mb-5">Tutor Connect</h1>
 
-        <form className="flex flex-col gap-4">
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col gap-4 bg-white p-6 rounded-lg shadow-lg"
+      >
+        <div className="flex flex-col">
+          <label htmlFor="email" className="text-gray-700 mb-1 font-medium">
+            E-mail
+          </label>
           <input
+            id="email"
+            className="text-lg p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500"
             type="email"
-            placeholder="E-mail"
-            className="border border-gray-300 rounded p-2 focus:outline-none focus:ring focus:ring-sky-400"
-            required
+            {...register("email", {})}
+            placeholder="Digite seu e-mail"
           />
+        </div>
 
+        <div className="flex flex-col">
+          <label htmlFor="password" className="text-gray-700 mb-1 font-medium">
+            Senha
+          </label>
           <input
+            id="password"
+            className="text-lg p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500"
             type="password"
-            placeholder="Senha"
-            className="border border-gray-300 rounded p-2 focus:outline-none focus:ring focus:ring-sky-400"
-            required
+            {...register("password", {})}
+            placeholder="Digite sua senha"
           />
+        </div>
 
-          <button
-            type="submit"
-            className="mt-2 bg-blue-500 text-white rounded p-2 hover:bg-blue-600 transition duration-300"
-          >
-            Entrar
-          </button>
-        </form>
-      </div>
+        <button
+          type="submit"
+          className="bg-sky-500 text-white text-lg font-semibold py-2 rounded-md border-2 border-sky-500 hover:bg-white hover:text-sky-500 transition duration-300"
+        >
+          Entrar
+        </button>
+      </form>
     </div>
   );
 }
