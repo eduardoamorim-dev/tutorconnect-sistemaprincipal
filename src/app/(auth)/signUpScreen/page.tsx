@@ -124,20 +124,11 @@ export default function SignUpScreen() {
             />
           </div>
 
-          <div className="flex justify-end mb-5">
-            <a
-              href="#"
-              className=" text-sm hover:underline focus:outline-none focus:ring-2 focus:ring-white"
-            >
-              Esqueci minha senha
-            </a>
-          </div>
-
           <button
             type="submit"
             className="bg-blue-700 text-white text-lg font-semibold py-3 rounded-2xl hover:bg-blue-500 hover:text-white transition duration-300"
           >
-            Entrar
+            Cadastrar
           </button>
         </form>
       </div>

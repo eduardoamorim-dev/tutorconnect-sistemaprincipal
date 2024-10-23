@@ -1,7 +1,7 @@
 "use client";
 
 import { useForm } from "react-hook-form";
-import SplashScreen from "../components/splashScreen/splashScreen";
+import SplashScreen from "../../../components/splashScreen/splashScreen";
 import { useEffect, useState } from "react";
 
 export default function SignInScreen() {
