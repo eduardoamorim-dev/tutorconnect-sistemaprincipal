@@ -1,8 +1,9 @@
 "use client";
 
 import { useForm } from "react-hook-form";
-import { useEffect, useState } from "react";
 
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Separator } from "@/components/ui/separator";
 import {
   Select,
   SelectContent,
@@ -10,18 +11,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Separator } from "@/components/ui/separator";
-
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Separator } from "@/components/ui/separator";
+import Link from "next/link";
 
 export default function SignUpScreen() {
   const { handleSubmit: hookFormHandleSubmit, register } = useForm();
@@ -33,17 +23,17 @@ export default function SignUpScreen() {
   return (
     <>
       <div className="min-h-screen flex flex-col items-center justify-center bg-slate p-4">
-        <p className="text-xl text-blue-700  mb-20">Tutor Connect</p>
+        <p className="text-xl text-blue-700  mb-5">Tutor Connect</p>
         <h1 className="text-3xl font-bold mb-2">Crie sua conta</h1>
-        <p className="mb-10">
+        <div className="mb-5 text-center text-sm">
           Já possui uma conta?{" "}
-          <a
-            href="#"
+          <Link
+            href="/sign-in"
             className="text-blue-700 text-sm hover:underline focus:outline-none focus:ring-2 focus:ring-white "
           >
             Fazer login
-          </a>
-        </p>
+          </Link>
+        </div>
 
         <form
           onSubmit={handleSubmit}
@@ -94,7 +84,7 @@ export default function SignUpScreen() {
               className="text-lg p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500 placeholder:text-lg placeholder-gray-400"
               type="nome"
               {...register("nome", {})}
-              placeholder="Digite seu e-mail"
+              placeholder="Digite seu nome"
             />
           </div>
 
