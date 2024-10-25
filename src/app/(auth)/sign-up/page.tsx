@@ -1,127 +1,217 @@
 "use client";
 
-import { useForm } from "react-hook-form";
-
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Separator } from "@/components/ui/separator";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { useForm, FormProvider } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import {
+  FormField,
+  FormItem,
+  FormLabel,
+  FormControl,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Separator } from "@/components/ui/separator";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { useState } from "react";
 
-export default function SignUpScreen() {
-  const { handleSubmit: hookFormHandleSubmit, register } = useForm();
+const schema = z.object({
+  name: z.string().min(1, "Informe seu nome completo"),
+  email: z.string().email("Informe um e-mail válido"),
+  password: z.string().min(8, "Informe a senha, mínimo 8 dígitos"),
+  escolaridade: z.enum(["ensinomedio", "graduacao"], {
+    errorMap: () => ({ message: "Selecione seu nível escolar" }),
+  }),
+  curso: z.string().min(1, "Selecione um curso"),
+});
 
-  const handleSubmit = hookFormHandleSubmit((data) => {
-    console.log("Formulário submetido");
+const Form = FormProvider;
+type FormData = z.infer<typeof schema>;
+
+export default function SignUpRefactor() {
+  const [cursoSelecionado, setCursoSelecionado] = useState<"ensinomedio" | "graduacao" | "">("");
+
+  const form = useForm<FormData>({
+    resolver: zodResolver(schema),
+    defaultValues: {
+      name: "",
+      email: "",
+      password: "",
+      escolaridade: "graduacao",
+      curso: "",
+    },
+  });
+
+  const handleSubmit = form.handleSubmit((formData) => {
+    console.log(formData);
   });
 
   return (
-    <>
-      <div className="min-h-screen flex flex-col items-center justify-center bg-slate p-4">
-        <p className="text-xl text-blue-700  mb-5">Tutor Connect</p>
-        <h1 className="text-3xl font-bold mb-2">Crie sua conta</h1>
-        <div className="mb-5 text-center text-sm">
-          Já possui uma conta?{" "}
-          <Link
-            href="/sign-in"
-            className="text-blue-700 text-sm hover:underline focus:outline-none focus:ring-2 focus:ring-white "
-          >
-            Fazer login
-          </Link>
-        </div>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-slate p-4">
+      <p className="text-xl text-blue-700 mb-5">Tutor Connect</p>
+      <h1 className="text-3xl font-bold mb-2">Crie sua conta</h1>
+      <div className="text-center text-sm">
+        Já possui uma conta?{" "}
+        <Link
+          href="/sign-in"
+          className="text-blue-700 text-sm hover:underline focus:outline-none focus:ring-2 focus:ring-white "
+        >
+          Fazer login
+        </Link>
+      </div>
 
+      <Form {...form}>
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col gap-4 w-full max-w-md"
+          className="flex flex-col gap-4 w-full max-w-md mt-10"
         >
-          <Separator className="my-4" />
 
-          <p className="font-bold">Você esta cursando</p>
+          <Separator className="mb-2" />
 
-          <RadioGroup defaultValue="comfortable">
-            <div className="flex  items-center">
-              <div className="flex items-center space-x-1">
-                <RadioGroupItem value="ensinomedio" id="r1" />
-                <label htmlFor="r1" className="ml-2">
-                  Ensino médio
-                </label>
-              </div>
-              <div className="flex items-center space-x-1 ml-10">
-                <RadioGroupItem value="graduacao" id="r2" />
-                <label htmlFor="r2" className="ml-2">
-                  Graduação
-                </label>
-              </div>
-            </div>
-          </RadioGroup>
+          <p className="font-bold">Você está cursando</p>
+          <FormField
+            control={form.control}
+            name="escolaridade"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <RadioGroup
+                    onValueChange={(value) => {
+                      field.onChange(value);
+                      setCursoSelecionado(value as "ensinomedio" | "graduacao");
+                    }}
+                    defaultValue={field.value}
+                  >
+                    <div className="flex items-center">
+                      <div className="flex items-center space-x-1">
+                        <RadioGroupItem value="ensinomedio" id="r1" />
+                        <label htmlFor="r1" className="ml-2">
+                          Ensino Médio
+                        </label>
+                      </div>
+                      <div className="flex items-center space-x-1 ml-10">
+                        <RadioGroupItem value="graduacao" id="r2" />
+                        <label htmlFor="r2" className="ml-2">
+                          Graduação
+                        </label>
+                      </div>
+                    </div>
+                  </RadioGroup>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-          <Select>
-            <SelectTrigger className="w-full">
-              <SelectValue placeholder="Selecione seu curso" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="ads">
-                Analise e Desenvolvimento de Sistemas
-              </SelectItem>
-              <SelectItem value="gc">Gestão Comercial</SelectItem>
-              <SelectItem value="ee">Engenharia Elétrica</SelectItem>
-            </SelectContent>
-          </Select>
-
-          <Separator className="my-4" />
-
-          <div className="flex flex-col">
-            <label htmlFor="nome" className=" mb-1 font-bold">
-              Nome Completo
-            </label>
-            <input
-              id="nome"
-              className="text-lg p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500 placeholder:text-lg placeholder-gray-400"
-              type="nome"
-              {...register("nome", {})}
-              placeholder="Digite seu nome"
+          <div className="mt-4">
+            <FormField
+              control={form.control}
+              name="curso"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="font-bold">Escolha seu curso</FormLabel>
+                  <FormControl>
+                    <Select
+                      value={field.value}
+                      onValueChange={(value) => field.onChange(value)}
+                    >
+                      <SelectTrigger className="w-full mt-2">
+                        <SelectValue
+                          placeholder="Selecione seu curso"
+                        />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {cursoSelecionado === "ensinomedio" ? (
+                          <>
+                            <SelectItem value="tecadministracao">Técnico em Administração</SelectItem>
+                            <SelectItem value="teccontabilidade">Técnico em Contabilidade</SelectItem>
+                            <SelectItem value="teceletronica">Técnico em Eletrônica</SelectItem>
+                            <SelectItem value="tecinformatica">Técnico em Informática</SelectItem>
+                          </>
+                        ) : (
+                          <>
+                            <SelectItem value="analiseedesenvolvimentodesistemas">Análise e Desenvolvimento de Sistemas</SelectItem>
+                            <SelectItem value="gestaocomercial">Gestão Comercial</SelectItem>
+                            <SelectItem value="engenhariaEletrica">Engenharia Elétrica</SelectItem>
+                          </>
+                        )}
+                      </SelectContent>
+                    </Select>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
             />
           </div>
 
-          <div className="flex flex-col">
-            <label htmlFor="email" className=" mb-1 font-bold">
-              E-mail
-            </label>
-            <input
-              id="email"
-              className="text-lg p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500 placeholder:text-lg placeholder-gray-400"
-              type="email"
-              {...register("email", {})}
-              placeholder="Digite seu e-mail"
-            />
-          </div>
+          <Separator className="mt-5 mb-3" />
 
-          <div className="flex flex-col">
-            <label htmlFor="password" className=" mb-1 font-bold">
-              Senha
-            </label>
-            <input
-              id="password"
-              className="text-lg p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500 placeholder:text-lg placeholder-gray-400"
-              type="password"
-              {...register("password", {})}
-              placeholder="Digite sua senha"
-            />
-          </div>
+          <FormField
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="font-bold">Nome Completo</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder="Tuttor Connect Da Silva"
+                    {...field}
+                    autoComplete="name"
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-          <button
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="font-bold">E-mail</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder="tutorconnect@gmail.com"
+                    {...field}
+                    autoComplete="email"
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="font-bold">Senha</FormLabel>
+                <FormControl>
+                  <Input
+                    type="password"
+                    placeholder="********"
+                    {...field}
+                    autoComplete="current-password"
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <Button
             type="submit"
-            className="bg-blue-700 text-white text-lg font-semibold py-3 rounded-2xl hover:bg-blue-500 hover:text-white transition duration-300"
+            className="bg-blue-700 text-white text-lg font-semibold py-3 rounded-2xl hover:bg-blue-500 transition duration-300"
           >
             Cadastrar
-          </button>
+          </Button>
         </form>
-      </div>
-    </>
+      </Form>
+    </div>
   );
 }
