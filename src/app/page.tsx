@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import SplashScreen from "../components/splashScreen/splashScreen";
-import TutorApplicationForm from "@/components/formTutor/TutorApplicationForm";
+import SplashScreen from "../components/SplashScreen/splashScreen";
+import Topbar from "@/components/Topbar/Topbar";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -21,7 +21,7 @@ export default function Home() {
         <SplashScreen />
       ) : (
         <div>
-          <TutorApplicationForm />
+          <Topbar />
         </div>
       )}
     </>
