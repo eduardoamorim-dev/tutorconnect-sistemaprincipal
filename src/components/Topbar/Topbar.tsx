@@ -42,9 +42,9 @@ const Topbar: React.FC = () => {
 
                     {/* Desktop Navigation */}
                     <div className="hidden lg:flex items-center space-x-4">
-                        <Link href="/" className="text-black hover:text-blue-600 font-semibold">
+                        {/* <Link href="/" className="text-black hover:text-blue-600 font-semibold">
                             Inicio
-                        </Link>
+                        </Link> */}
                         <Link href="/" className="text-black hover:text-blue-600 font-semibold">
                             Encontrar tutores
                         </Link>

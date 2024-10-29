@@ -93,12 +93,12 @@ export default function SignIn() {
 
           <Button
             type="submit"
-            className="bg-blue-700 text-white text-lg font-semibold py-3 rounded-sm hover:bg-blue-500 transition duration-300"
+            className="bg-blue-700 text-white text-lg font-semibold py-3 rounded-2xl hover:bg-blue-500 transition duration-300"
           >
             Entrar
           </Button>
 
-          <Button type="button" variant="outline" className="w-full mt-2" >
+          <Button type="button" variant="outline" className="w-full rounded-2xl" >
             Entrar com o Google
           </Button>
         </form>
