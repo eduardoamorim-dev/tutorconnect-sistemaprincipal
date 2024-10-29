@@ -30,7 +30,7 @@ export const tutors: Tutor[] = [
     course: "Sistemas de Informação",
     subjects: ["JavaScript", "TypeScript", "Node.js", "MongoDB"],
     avatarUrl: "https://github.com/carlosrobert0.png",
-    level: "ensino_medio",
+    level: "graduacao",
   },
   {
     id: "4",
