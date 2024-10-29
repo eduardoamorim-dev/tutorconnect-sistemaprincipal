@@ -21,7 +21,7 @@ const Topbar: React.FC = () => {
             <div className="container mx-auto p-4">
                 <div className="flex items-center justify-between">
                     {/* Logo */}
-                    <Link href="/" className="text-xl text-blue-700 font-semibold">
+                    <Link href="/" className="text-xl text-violet-700 font-semibold">
                         Tutor Connect
                     </Link>
 
@@ -45,17 +45,17 @@ const Topbar: React.FC = () => {
                         <Link href="/" className="text-black hover:text-blue-600 font-semibold">
                             Inicio
                         </Link>
-                        <Link href="/" className="text-black hover:text-blue-600 font-semibold">
+                        <Link href="/searchTutor" className="text-black hover:text-blue-600 font-semibold">
                             Encontrar tutores
                         </Link>
-                        <Link href="/TutorApplicationForm" className="bg-blue-700 text-white px-6 py-3 rounded-2xl hover:bg-blue-500 transition duration-300 font-semibold">
+                        <Link href="/TutorApplicationForm" className="bg-violet-700 text-white px-6 py-3 rounded-2xl hover:bg-violet-500 transition duration-300 font-semibold">
                             Tornar-se Tutor
                         </Link>
 
                         <DropdownMenu>
                             <DropdownMenuTrigger asChild>
                                 <Button variant="ghost" className="p-0">
-                                    <User className="h-8 w-8 text-blue-700" />
+                                    <User className="h-8 w-8 text-violet-700" />
                                 </Button>
                             </DropdownMenuTrigger>
                             <DropdownMenuContent>
@@ -75,7 +75,7 @@ const Topbar: React.FC = () => {
                         <Link href="/" className="text-black hover:text-blue-600 font-semibold">
                             Inicio
                         </Link>
-                        <Link href="/" className="text-black hover:text-blue-600 font-semibold">
+                        <Link href="/searchTutor" className="text-black hover:text-blue-600 font-semibold">
                             Encontrar tutores
                         </Link>
 
@@ -83,7 +83,7 @@ const Topbar: React.FC = () => {
                             Acessar Perfil
                         </Link>
 
-                        <Link href="/TutorApplicationForm" className="bg-blue-700 text-white px-6 py-3 rounded-2xl hover:bg-blue-500 transition duration-300 text-center font-semibold">
+                        <Link href="/TutorApplicationForm" className="bg-violet-700 text-white px-6 py-3 rounded-2xl hover:bg-violet-500 transition duration-300 text-center font-semibold">
                             Tornar-se Tutor
                         </Link>
 

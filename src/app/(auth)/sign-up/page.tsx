@@ -51,13 +51,13 @@ export default function SignUpRefactor() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-slate p-4">
-      <p className="text-xl text-blue-700 mb-5">Tutor Connect</p>
+      <p className="text-xl text-violet-700 mb-5">Tutor Connect</p>
       <h1 className="text-3xl font-bold mb-2">Crie sua conta</h1>
       <div className="text-center text-sm">
         Já possui uma conta?{" "}
         <Link
           href="/sign-in"
-          className="text-blue-700 text-sm hover:underline focus:outline-none focus:ring-2 focus:ring-white "
+          className="text-violet-700 text-sm hover:underline focus:outline-none focus:ring-2 focus:ring-white "
         >
           Fazer login
         </Link>
@@ -206,7 +206,7 @@ export default function SignUpRefactor() {
 
           <Button
             type="submit"
-            className="bg-blue-700 text-white text-lg font-semibold py-3 rounded-2xl hover:bg-blue-500 transition duration-300"
+            className="bg-violet-700 text-white text-lg font-semibold py-3 rounded-2xl hover:bg-violet-500 transition duration-300"
           >
             Cadastrar
           </Button>

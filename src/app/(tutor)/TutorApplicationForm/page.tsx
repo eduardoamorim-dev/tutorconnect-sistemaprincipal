@@ -94,7 +94,7 @@ export default function TutorApplicationForm() {
 
           <button
             type="submit"
-            className="bg-blue-700 text-white text-lg font-semibold py-3 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all duration-300"
+            className="bg-violet-700 text-white text-lg font-semibold py-3 rounded-2xl hover:bg-violet-600 focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all duration-300 "
           >
             Enviar candidatura
           </button>

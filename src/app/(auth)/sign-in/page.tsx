@@ -37,7 +37,7 @@ export default function SignIn() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-slate p-4">
-      <p className="text-xl text-blue-700 mb-5">Tutor Connect</p>
+      <p className="text-xl text-violet-700 mb-5">Tutor Connect</p>
       <h1 className="text-3xl font-bold mb-10">Acesse sua conta</h1>
 
       <Form {...form}>
@@ -93,12 +93,12 @@ export default function SignIn() {
 
           <Button
             type="submit"
-            className="bg-blue-700 text-white text-lg font-semibold py-3 rounded-sm hover:bg-blue-500 transition duration-300"
+            className="bg-violet-700 text-white text-lg font-semibold py-3 rounded-2xl hover:bg-violet-500 transition duration-300"
           >
             Entrar
           </Button>
 
-          <Button type="button" variant="outline" className="w-full mt-2" >
+          <Button type="button" variant="outline" className="w-full rounded-2xl" >
             Entrar com o Google
           </Button>
         </form>
@@ -108,7 +108,7 @@ export default function SignIn() {
         Novo por aqui?{" "}
         <Link
           href="/sign-up"
-          className="text-blue-700 text-sm hover:underline focus:outline-none focus:ring-2 focus:ring-white"
+          className="text-violet-700 text-sm hover:underline focus:outline-none focus:ring-2 focus:ring-white"
         >
           Crie uma conta
         </Link>
