@@ -11,6 +11,7 @@ import SplashScreen from "../../components/SplashScreen/SplashScreen";
 import Topbar from "@/components/Topbar/Topbar";
 import TutorCard from "@/components/TutorCard/TutorCard";
 import SchudeleModal from "@/components/SchudeleModal/SchudeleModal";
+import Footer from "@/components/Footer/Footer";
 
 const SearchTutor = () => {
     const [loading, setLoading] = useState(true);
@@ -159,6 +160,8 @@ const SearchTutor = () => {
                     )}
                 </>
             )}
+
+            <Footer />
         </>
     );
 }
