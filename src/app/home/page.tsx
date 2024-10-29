@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { Search, Book, Calendar, Star, User } from "lucide-react";
-import SplashScreen from "@/components/SplashScreen/splashScreen";
+import SplashScreen from "@/components/SplashScreen/SplashScreen";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);

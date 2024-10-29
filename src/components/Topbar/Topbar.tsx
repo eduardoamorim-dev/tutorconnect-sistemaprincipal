@@ -42,10 +42,10 @@ const Topbar: React.FC = () => {
 
                     {/* Desktop Navigation */}
                     <div className="hidden lg:flex items-center space-x-4">
-                        <Link href="/sign-in" className="text-black hover:text-blue-600 font-semibold">
+                        <Link href="/" className="text-black hover:text-blue-600 font-semibold">
                             Inicio
                         </Link>
-                        <Link href="/about" className="text-black hover:text-blue-600 font-semibold">
+                        <Link href="/" className="text-black hover:text-blue-600 font-semibold">
                             Encontrar tutores
                         </Link>
                         <Link href="/TutorApplicationForm" className="bg-blue-700 text-white px-6 py-3 rounded-2xl hover:bg-blue-500 transition duration-300 font-semibold">
@@ -75,7 +75,7 @@ const Topbar: React.FC = () => {
                         <Link href="/" className="text-black hover:text-blue-600 font-semibold">
                             Inicio
                         </Link>
-                        <Link href="/about" className="text-black hover:text-blue-600 font-semibold">
+                        <Link href="/" className="text-black hover:text-blue-600 font-semibold">
                             Encontrar tutores
                         </Link>
 
