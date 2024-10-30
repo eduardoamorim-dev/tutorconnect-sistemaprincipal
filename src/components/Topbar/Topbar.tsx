@@ -1,8 +1,10 @@
+"use client"
+
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from '@/components/ui/dropdown-menu';
-import { User, Menu, X } from 'lucide-react';
+import { User, Menu, X, KeyRound } from 'lucide-react';
 import { Separator } from '../ui/separator';
 
 const Topbar: React.FC = () => {
@@ -48,6 +50,7 @@ const Topbar: React.FC = () => {
                         <Link href="/searchTutor" className="text-black hover:text-blue-600 font-semibold">
                             Encontrar tutores
                         </Link>
+
                         <Link href="/TutorApplicationForm" className="bg-blue-700 text-white px-6 py-3 rounded-2xl hover:bg-blue-500 transition duration-300 font-semibold">
                             Tornar-se Tutor
                         </Link>
@@ -61,6 +64,9 @@ const Topbar: React.FC = () => {
                             <DropdownMenuContent>
                                 <Link href="/profile" passHref>
                                     <DropdownMenuItem>Acessar Perfil</DropdownMenuItem>
+                                </Link>
+                                <Link href="/admin" passHref>
+                                    <DropdownMenuItem>Acessar Administração</DropdownMenuItem>
                                 </Link>
                                 <DropdownMenuItem onClick={handleLogout}>Logout</DropdownMenuItem>
                             </DropdownMenuContent>

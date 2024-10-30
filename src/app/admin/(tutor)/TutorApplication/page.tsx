@@ -21,7 +21,6 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Check, X, Eye, Edit } from "lucide-react";
 
-// Tipos
 interface TutorApplication {
   id: string;
   name: string;
@@ -37,7 +36,6 @@ interface TutorApplication {
   editable: boolean;
 }
 
-// Mock de dados
 const mockApplications: TutorApplication[] = [
   {
     id: "1",

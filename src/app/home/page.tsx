@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { Search, Book, Calendar, Star, User } from "lucide-react";
 import SplashScreen from "@/components/SplashScreen/SplashScreen";
+import RootLayout from "@/app/layout"; // Importar o layout para uso local
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -14,8 +15,9 @@ export default function Home() {
 
     return () => clearTimeout(timer);
   }, []);
+
   return (
-    <>
+    <RootLayout loading={loading}>
       {loading ? (
         <SplashScreen />
       ) : (
@@ -87,7 +89,6 @@ export default function Home() {
           </main>
         </div>
       )}
-      ;
-    </>
+    </RootLayout>
   );
 }

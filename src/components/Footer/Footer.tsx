@@ -1,7 +1,10 @@
+"use client"
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Instagram, Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
@@ -55,7 +58,7 @@ const Footer = () => {
                                     key={link.name}
                                     variant="ghost"
                                     size="icon"
-                                    className="hover:bg-gray-800 transition-colors"
+                                    className=" transition-colors"
                                     asChild
                                 >
                                     <a
@@ -82,7 +85,7 @@ const Footer = () => {
                             className="flex items-center gap-1 text-sm text-gray-900"
                             whileHover={{ scale: 1.05 }}
                         >
-                            Feito com <Heart className="w-4 h-4 text-red-500" /> por
+                            Feito por
                             <a
                                 href={linkedin.href}
                                 target="_blank"
