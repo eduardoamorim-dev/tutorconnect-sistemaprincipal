@@ -68,7 +68,7 @@ const SchudeleModal = () => {
             {selectedDate && selectedTime && (
                 <button
                     onClick={handleSchedule}
-                    className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-full flex items-center justify-center w-full"
+                    className="mt-4 bg-violet-600 text-white px-4 py-2 rounded-full flex items-center justify-center w-full"
                 >
                     <Check size={16} className="mr-2" /> Confirmar Agendamento
                 </button>

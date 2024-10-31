@@ -42,10 +42,10 @@ const Topbar: React.FC = () => {
 
                     {/* Desktop Navigation */}
                     <div className="hidden lg:flex items-center space-x-4">
-                        <Link href="/" className="text-black hover:text-blue-600 font-semibold">
+                        <Link href="/" className="text-black hover:text-violet-600 font-semibold">
                             Inicio
                         </Link>
-                        <Link href="/searchTutor" className="text-black hover:text-blue-600 font-semibold">
+                        <Link href="/searchTutor" className="text-black hover:text-violet-600 font-semibold">
                             Encontrar tutores
                         </Link>
                         <Link href="/TutorApplicationForm" className="bg-violet-700 text-white px-6 py-3 rounded-2xl hover:bg-violet-500 transition duration-300 font-semibold">
@@ -72,14 +72,14 @@ const Topbar: React.FC = () => {
                 <div className={`lg:hidden ${isMenuOpen ? 'block' : 'hidden'} pt-4`}>
                     <Separator className="mb-5" />
                     <div className="flex flex-col space-y-4">
-                        <Link href="/" className="text-black hover:text-blue-600 font-semibold">
+                        <Link href="/" className="text-black hover:text-violet-600 font-semibold">
                             Inicio
                         </Link>
-                        <Link href="/searchTutor" className="text-black hover:text-blue-600 font-semibold">
+                        <Link href="/searchTutor" className="text-black hover:text-violet-600 font-semibold">
                             Encontrar tutores
                         </Link>
 
-                        <Link href="/profile" className="text-black hover:text-blue-600 font-semibold">
+                        <Link href="/profile" className="text-black hover:text-violet-600 font-semibold">
                             Acessar Perfil
                         </Link>
 
@@ -89,7 +89,7 @@ const Topbar: React.FC = () => {
 
                         <Separator className="mb-5" />
 
-                        <Button onClick={handleLogout} className="text-black bg-white hover:bg-white hover:text-blue-600 font-semibold text-left">
+                        <Button onClick={handleLogout} className="text-black bg-white hover:bg-white hover:text-violet-600 font-semibold text-left">
                             Logout
                         </Button>
                     </div>

@@ -20,7 +20,7 @@ export default function Home() {
         <SplashScreen />
       ) : (
         <div className="bg-gray-100 min-h-screen p-8">
-          <header className="bg-blue-600 text-white p-4 rounded-t-lg shadow-md">
+          <header className="bg-violet-600 text-white p-4 rounded-t-lg shadow-md">
             <h1 className="text-2xl font-bold">TutorConnect</h1>
           </header>
 
@@ -36,7 +36,7 @@ export default function Home() {
               </button>
             </div>
             <div className="flex items-center space-x-4">
-              <button className="bg-blue-600 text-white px-4 py-2 rounded-full">
+              <button className="bg-violet-600 text-white px-4 py-2 rounded-full">
                 Tornar-se Tutor
               </button>
               <User size={24} className="text-blue-600" />

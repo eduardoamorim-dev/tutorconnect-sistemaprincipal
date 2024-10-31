@@ -91,8 +91,6 @@ const Home: NextPage = () => {
                     </motion.div>
                 </section>
             </motion.div>
-
-            <Footer />
         </div>
     );
 };
