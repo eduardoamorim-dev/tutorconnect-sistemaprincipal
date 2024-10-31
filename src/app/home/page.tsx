@@ -26,11 +26,11 @@ export default function Home() {
 
           <nav className="bg-white p-4 flex justify-between items-center shadow-md">
             <div className="flex space-x-4">
-              <button className="flex items-center space-x-2 text-blue-600">
+              <button className="flex items-center space-x-2 text-violet-600">
                 <Book size={20} />
                 <span>Encontrar Tutor</span>
               </button>
-              <button className="flex items-center space-x-2 text-blue-600">
+              <button className="flex items-center space-x-2 text-violet-600">
                 <Calendar size={20} />
                 <span>Minhas Sessões</span>
               </button>
@@ -39,7 +39,7 @@ export default function Home() {
               <button className="bg-violet-600 text-white px-4 py-2 rounded-full">
                 Tornar-se Tutor
               </button>
-              <User size={24} className="text-blue-600" />
+              <User size={24} className="text-violet-600" />
             </div>
           </nav>
 
@@ -79,9 +79,9 @@ export default function Home() {
             <aside className="bg-white p-6 rounded-lg shadow-md h-fit">
               <h2 className="text-xl font-semibold mb-4">Sessões Populares</h2>
               <ul className="space-y-2">
-                <li className="text-blue-600">Introdução à Programação</li>
-                <li className="text-blue-600">Estatística Aplicada</li>
-                <li className="text-blue-600">Química Orgânica</li>
+                <li className="text-violet-600">Introdução à Programação</li>
+                <li className="text-violet-600">Estatística Aplicada</li>
+                <li className="text-violet-600">Química Orgânica</li>
               </ul>
             </aside>
           </main>
