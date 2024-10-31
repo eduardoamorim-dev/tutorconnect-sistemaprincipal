@@ -205,7 +205,7 @@ const TutorApplicationsAdmin = () => {
                         <Button
                           variant="outline"
                           size="icon"
-                          className="text-blue-600 hover:text-violet-700"
+                          className="text-violet-600 hover:text-violet-700"
                           onClick={() => handleEditDecision(application.id)}
                         >
                           <Edit className="h-4 w-4" />

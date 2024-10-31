@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -48,7 +50,8 @@ const Topbar: React.FC = () => {
                         <Link href="/searchTutor" className="text-black hover:text-violet-600 font-semibold">
                             Encontrar tutores
                         </Link>
-                        <Link href="/TutorApplicationForm" className="bg-violet-700 text-white px-6 py-3 rounded-2xl hover:bg-violet-500 transition duration-300 font-semibold">
+
+                        <Link href="/TutorApplicationForm" className="bg-violet-700 text-white px-6 py-3 rounded-2xl hover:bg-violet-600 transition duration-300 font-semibold">
                             Tornar-se Tutor
                         </Link>
 
@@ -61,6 +64,9 @@ const Topbar: React.FC = () => {
                             <DropdownMenuContent>
                                 <Link href="/profile" passHref>
                                     <DropdownMenuItem>Acessar Perfil</DropdownMenuItem>
+                                </Link>
+                                <Link href="/admin" passHref>
+                                    <DropdownMenuItem>Acessar Administração</DropdownMenuItem>
                                 </Link>
                                 <DropdownMenuItem onClick={handleLogout}>Logout</DropdownMenuItem>
                             </DropdownMenuContent>
@@ -83,7 +89,7 @@ const Topbar: React.FC = () => {
                             Acessar Perfil
                         </Link>
 
-                        <Link href="/TutorApplicationForm" className="bg-violet-700 text-white px-6 py-3 rounded-2xl hover:bg-violet-500 transition duration-300 text-center font-semibold">
+                        <Link href="/TutorApplicationForm" className="bg-violet-700 text-white px-6 py-3 rounded-2xl hover:text-violet-600 transition duration-300 text-center font-semibold">
                             Tornar-se Tutor
                         </Link>
 
