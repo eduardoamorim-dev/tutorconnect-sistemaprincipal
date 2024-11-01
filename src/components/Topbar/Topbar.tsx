@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from '@/components/ui/dropdown-menu';
-import { User, Menu, X, LogOut, UserCog, Settings } from 'lucide-react';
+import { User, Menu, X, LogOut, UserCog, Settings, GraduationCap } from 'lucide-react';
 import { Separator } from '../ui/separator';
 
 
@@ -24,8 +24,9 @@ const Topbar: React.FC = () => {
             <div className="container mx-auto p-4">
                 <div className="flex items-center justify-between">
                     {/* Logo */}
-                    <Link href="/" className="text-xl text-violet-700 font-semibold">
-                        Tutor Connect
+                    <Link href="/" className="flex items-center text-xl text-violet-700 font-semibold space-x-1">
+                        <GraduationCap className="w-6 h-6" />
+                        <span>Tutor Connect</span>
                     </Link>
 
                     {/* Mobile Menu Button */}

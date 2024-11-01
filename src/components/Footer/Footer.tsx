@@ -55,7 +55,6 @@ const Footer = () => {
                                     key={link.name}
                                     variant="ghost"
                                     size="icon"
-                                    className="hover:bg-gray-800 transition-colors"
                                     asChild
                                 >
                                     <a

@@ -23,7 +23,7 @@ const items = [
     },
     {
         title: "Gerenciar Tutores",
-        url: "/admin/tutor/gerenciar",
+        url: "/admin/tutores/gerenciar",
         icon: UserCog,
     },
     {

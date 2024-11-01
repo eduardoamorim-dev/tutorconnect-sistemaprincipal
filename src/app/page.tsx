@@ -30,7 +30,7 @@ const Home: NextPage = () => {
                 animate="visible"
                 variants={containerVariants}
             >
-                <section className="bg-violet-700 text-white flex flex-col justify-center items-center p-28 relative overflow-hidden">
+                <section className="bg-complex-gradient text-white flex flex-col justify-center items-center p-28 relative overflow-hidden">
                     <motion.h1 variants={itemVariants} className="text-3xl md:text-4xl font-bold mb-4 text-center">
                         Transforme seu aprendizado com nosso Sistema de Tutoria Universitária
                     </motion.h1>
