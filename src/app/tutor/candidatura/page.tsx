@@ -1,6 +1,5 @@
 "use client";
 
-import Topbar from "@/components/Topbar/Topbar";
 import { useForm } from "react-hook-form";
 
 export default function TutorApplicationForm() {
@@ -12,8 +11,6 @@ export default function TutorApplicationForm() {
 
   return (
     <>
-      <Topbar />
-
       <div className="min-h-screen flex flex-col items-center justify-center bg-slate p-6">
         <h1 className="text-4xl font-bold mb-4 text-gray-800">Seja um Tutor</h1>
 
@@ -34,7 +31,7 @@ export default function TutorApplicationForm() {
             </label>
             <input
               id="phone"
-              className="text-lg p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 placeholder-gray-400 bg-transparent"
+              className="text-lg p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 placeholder-gray-400 bg-transparent"
               type="tel"
               {...register("phone", { required: true })}
               placeholder="(00) 00000-0000"
@@ -51,7 +48,7 @@ export default function TutorApplicationForm() {
             </label>
             <select
               id="specialty"
-              className="text-lg p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 placeholder-gray-400 bg-transparent"
+              className="text-lg p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 placeholder-gray-400 bg-transparent"
               {...register("specialty", { required: true })}
               aria-label="Campo de especialidade"
             >
@@ -69,7 +66,7 @@ export default function TutorApplicationForm() {
             </label>
             <textarea
               id="experience"
-              className="text-lg p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 placeholder-gray-400 bg-transparent min-h-[120px] resize-y"
+              className="text-lg p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-300 placeholder-gray-400 bg-transparent min-h-[120px] resize-y"
               {...register("experience", { required: true })}
               placeholder="Descreva sua experiência como professor ou tutor"
               aria-label="Campo de experiência"
@@ -85,7 +82,7 @@ export default function TutorApplicationForm() {
             </label>
             <textarea
               id="motivation"
-              className="text-lg p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 placeholder-gray-400 bg-transparent min-h-[120px] resize-y"
+              className="text-lg p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-300 placeholder-gray-400 bg-transparent min-h-[120px] resize-y"
               {...register("motivation", { required: true })}
               placeholder="Conte-nos sua motivação para se tornar um tutor"
               aria-label="Campo de motivação"
@@ -94,7 +91,7 @@ export default function TutorApplicationForm() {
 
           <button
             type="submit"
-            className="bg-violet-700 text-white text-lg font-semibold py-3 rounded-2xl hover:bg-violet-600 focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all duration-300 "
+            className="bg-violet-700 text-white text-lg font-semibold py-3 rounded-2xl hover:bg-violet-600 focus:outline-none focus:ring-4 focus:ring-violet-300 transition-all duration-300 "
           >
             Enviar candidatura
           </button>

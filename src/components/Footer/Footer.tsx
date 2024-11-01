@@ -43,7 +43,7 @@ const Footer = () => {
             initial="hidden"
             animate="visible"
             variants={containerAnimation}
-            className="bg-gray-100 text-gray-900 py-2 mt-auto"
+            className="bg-slate-100 text-gray-900 py-0"
         >
             <div className="container mx-auto px-4">
                 <div className="flex flex-col md:flex-row justify-between items-center gap-6">
@@ -82,7 +82,7 @@ const Footer = () => {
                             className="flex items-center gap-1 text-sm text-gray-900"
                             whileHover={{ scale: 1.05 }}
                         >
-                            Feito com <Heart className="w-4 h-4 text-red-500" /> por
+                            Feito por
                             <a
                                 href={linkedin.href}
                                 target="_blank"

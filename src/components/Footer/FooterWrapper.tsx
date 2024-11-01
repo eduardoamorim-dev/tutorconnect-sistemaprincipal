@@ -5,9 +5,11 @@ import Footer from "./Footer";
 
 const FooterWrapper = () => {
     const pathname = usePathname();
-    const hideFooterRoutes = ["/sign-in", "/sign-up", "/footer"];
+    const hideFooterRoutes = ["/sign-in", "/sign-up", "perfil"];
 
-    return !hideFooterRoutes.includes(pathname) ? <Footer /> : null;
+    const shouldHideFooter = hideFooterRoutes.includes(pathname) || pathname.startsWith("/admin");
+
+    return !shouldHideFooter ? <Footer /> : null;
 };
 
 export default FooterWrapper;

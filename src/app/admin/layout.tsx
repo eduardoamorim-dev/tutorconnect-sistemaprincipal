@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import "./admin.css";
 
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
 import { AppSidebar } from "@/components/Sidebar/AppSideBar";

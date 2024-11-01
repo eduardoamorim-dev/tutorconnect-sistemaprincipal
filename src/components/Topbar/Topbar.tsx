@@ -4,8 +4,9 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from '@/components/ui/dropdown-menu';
-import { User, Menu, X } from 'lucide-react';
+import { User, Menu, X, LogOut, UserCog, Settings } from 'lucide-react';
 import { Separator } from '../ui/separator';
+
 
 const Topbar: React.FC = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -47,11 +48,11 @@ const Topbar: React.FC = () => {
                         <Link href="/" className="text-black hover:text-violet-600 font-semibold">
                             Inicio
                         </Link>
-                        <Link href="/searchTutor" className="text-black hover:text-violet-600 font-semibold">
+                        <Link href="/tutor/lista" className="text-black hover:text-violet-600 font-semibold">
                             Encontrar tutores
                         </Link>
 
-                        <Link href="/TutorApplicationForm" className="bg-violet-700 text-white px-6 py-3 rounded-2xl hover:bg-violet-600 transition duration-300 font-semibold">
+                        <Link href="/tutor/candidatura" className="bg-violet-700 text-white px-6 py-3 rounded-2xl hover:bg-violet-600 transition duration-300 font-semibold">
                             Tornar-se Tutor
                         </Link>
 
@@ -62,13 +63,13 @@ const Topbar: React.FC = () => {
                                 </Button>
                             </DropdownMenuTrigger>
                             <DropdownMenuContent>
-                                <Link href="/profile" passHref>
-                                    <DropdownMenuItem>Acessar Perfil</DropdownMenuItem>
+                                <Link href="/perfil" passHref>
+                                    <DropdownMenuItem><User />{" "}Acessar Perfil</DropdownMenuItem>
                                 </Link>
                                 <Link href="/admin" passHref>
-                                    <DropdownMenuItem>Acessar Administração</DropdownMenuItem>
+                                    <DropdownMenuItem><Settings />{" "}Acessar Administração</DropdownMenuItem>
                                 </Link>
-                                <DropdownMenuItem onClick={handleLogout}>Logout</DropdownMenuItem>
+                                <DropdownMenuItem onClick={handleLogout}><LogOut />{" "}Logout</DropdownMenuItem>
                             </DropdownMenuContent>
                         </DropdownMenu>
                     </div>
@@ -81,15 +82,15 @@ const Topbar: React.FC = () => {
                         <Link href="/" className="text-black hover:text-violet-600 font-semibold">
                             Inicio
                         </Link>
-                        <Link href="/searchTutor" className="text-black hover:text-violet-600 font-semibold">
+                        <Link href="/tutor/lista" className="text-black hover:text-violet-600 font-semibold">
                             Encontrar tutores
                         </Link>
 
-                        <Link href="/profile" className="text-black hover:text-violet-600 font-semibold">
+                        <Link href="/perfil" className="text-black hover:text-violet-600 font-semibold">
                             Acessar Perfil
                         </Link>
 
-                        <Link href="/TutorApplicationForm" className="bg-violet-700 text-white px-6 py-3 rounded-2xl hover:text-violet-600 transition duration-300 text-center font-semibold">
+                        <Link href="/tutor/candidatura" className="bg-violet-700 text-white px-6 py-3 rounded-2xl hover:text-violet-600 transition duration-300 text-center font-semibold">
                             Tornar-se Tutor
                         </Link>
 

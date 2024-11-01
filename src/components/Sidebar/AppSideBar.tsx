@@ -1,4 +1,4 @@
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react"
+import { Home, LogOut, UserCog } from "lucide-react"
 
 import {
     Sidebar,
@@ -22,24 +22,14 @@ const items = [
         icon: Home,
     },
     {
-        title: "Aplicação Tutores",
-        url: "/admin/TutorApplication",
-        icon: Home,
+        title: "Gerenciar Tutores",
+        url: "/admin/tutor/gerenciar",
+        icon: UserCog,
     },
     {
-        title: "Calendar",
-        url: "#",
-        icon: Calendar,
-    },
-    {
-        title: "Search",
-        url: "#",
-        icon: Search,
-    },
-    {
-        title: "Settings",
+        title: "Sair",
         url: "/",
-        icon: Settings,
+        icon: LogOut,
     },
 ]
 
@@ -49,7 +39,7 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({ className }) => {
             <Sidebar>
                 <SidebarContent>
                     <SidebarGroup>
-                        <SidebarGroupLabel>Application</SidebarGroupLabel>
+                        <SidebarGroupLabel>Tutor Connect</SidebarGroupLabel>
                         <SidebarGroupContent>
                             <SidebarMenu>
                                 {items.map((item) => (

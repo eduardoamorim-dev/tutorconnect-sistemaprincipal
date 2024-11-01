@@ -39,7 +39,7 @@ const SchudeleModal = () => {
                             <button
                                 key={slot.date}
                                 onClick={() => handleDateSelect(slot.date)}
-                                className={`w-full p-2 text-left rounded ${selectedDate === slot.date ? 'bg-blue-100 text-violet-700' : 'bg-gray-100'
+                                className={`w-full p-2 text-left rounded ${selectedDate === slot.date ? 'bg-violet-100 text-violet-700' : 'bg-gray-100'
                                     }`}
                             >
                                 {slot.date}
@@ -55,7 +55,7 @@ const SchudeleModal = () => {
                             <button
                                 key={time}
                                 onClick={() => handleTimeSelect(time)}
-                                className={`w-full p-2 text-left rounded flex items-center ${selectedTime === time ? 'bg-blue-100 text-violet-700' : 'bg-gray-100'
+                                className={`w-full p-2 text-left rounded flex items-center ${selectedTime === time ? 'bg-violet-100 text-violet-700' : 'bg-gray-100'
                                     }`}
                             >
                                 <Clock size={16} className="mr-2" /> {time}

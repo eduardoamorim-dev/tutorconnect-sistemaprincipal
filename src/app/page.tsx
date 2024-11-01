@@ -39,14 +39,14 @@ const Home: NextPage = () => {
                     </motion.p>
                     <motion.a
                         variants={itemVariants}
-                        href="/searchTutor"
+                        href="/tutor/lista"
                         className="bg-white text-violet-700 font-medium py-3 px-6 rounded hover:bg-gray-200"
                     >
                         Encontrar Tutor
                     </motion.a>
                 </section>
-                <section className="flex-1 flex flex-col justify-center items-center p-8">
-                    <motion.h2 variants={itemVariants} className="text-2xl md:text-3xl font-bold mb-8 text-center">
+                <section className="flex-grow flex-1 flex flex-col justify-center items-center p-8">
+                    <motion.h2 variants={itemVariants} className="text-2xl md:text-3xl font-bold mb-8 mt-20 text-center">
                         Principais Benefícios
                     </motion.h2>
                     <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
