@@ -52,4 +52,16 @@ export const tutors: Tutor[] = [
     avatarUrl: "https://github.com/thalesaguiar.png",
     level: "ensino_medio",
   },
+  {
+    id: "6",
+    name: "João Augusto",
+    course: "Engenharia da Computação",
+    subjects: [
+      "Arquitetura de Computadores",
+      "Assembly",
+      "Sistemas Embarcados",
+    ],
+    avatarUrl: "https://github.com/joaoaugusto2020.png",
+    level: "graduacao",
+  },
 ];
