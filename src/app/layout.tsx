@@ -5,26 +5,25 @@ import TopbarWrapper from "@/components/Topbar/TopbarWrapper";
 import FooterWrapper from "@/components/Footer/FooterWrapper";
 
 export const metadata: Metadata = {
-  title: "Tutor Connect",
-  description: "Create by Eduardo Amorim",
+    title: "Tutor Connect",
+    description: "Create by Eduardo Amorim",
 };
 
 export default function RootLayout({
-  children,
+    children,
 }: {
-  children: React.ReactNode;
+    children: React.ReactNode;
 }) {
-  return (
-    <html lang="pt-br">
-      <head>
-        <link rel="icon" href="/favicon.png" />
-      </head>
-      <body className="antialiased">
-        <TopbarWrapper />
-        {children}
-        <FooterWrapper />
-      </body>
-    </html>
-  );
+    return (
+        <html lang="pt-br">
+            <head>
+                <link rel="icon" href="/favicon.png" />
+            </head>
+            <body className="flex-1 flex-column space-between h-screen antialiased">
+                <TopbarWrapper />
+                {children}
+                <FooterWrapper />
+            </body>
+        </html>
+    );
 }
-

@@ -52,7 +52,6 @@ const SearchTutor = () => {
 
     return (
         <>
-
             <div className="flex justify-center">
                 <div className="flex justify-center px-4 sm:px-6 lg:px-8">
                     <div className="text-center">
@@ -63,8 +62,8 @@ const SearchTutor = () => {
                 </div>
             </div>
 
-            <div className="bg-slate-50 mt-10">
-                <div className="container mx-auto py-3">
+            <div className="bg-slate-50 pb-24 mt-10">
+                <div className="container mx-auto py-5">
                     <h1 className="text-3xl font-bold py-4 text-left">Tutores Disponíveis</h1>
 
                     {/* Filtros */}

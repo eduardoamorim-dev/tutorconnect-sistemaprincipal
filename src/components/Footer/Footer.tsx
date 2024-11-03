@@ -1,10 +1,16 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Instagram, Heart } from 'lucide-react';
+import { Instagram } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+
+import { usePathname } from "next/navigation";
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
+    const pathname = usePathname();
+
+    const changeClassName = ["/"];
+    const shouldHideFooter = changeClassName.includes(pathname);
 
     const linkedin = { href: 'https://www.linkedin.com/in/eduardoamorim-dev/' }
 
@@ -43,9 +49,9 @@ const Footer = () => {
             initial="hidden"
             animate="visible"
             variants={containerAnimation}
-            className="bg-slate-100 text-gray-900 py-0"
+            className={shouldHideFooter ? "bg-slate-100 text-gray-900 py-0 fixed bottom-0 w-full" : "bg-slate-100 text-gray-900 py-0 fixed bottom-0 w-full"}
         >
-            <div className="container mx-auto px-4">
+            <div className="container mx-auto ">
                 <div className="flex flex-col md:flex-row justify-between items-center gap-6">
                     <motion.div variants={itemAnimation}>
                         <h3 className="text-xl font-semibold mt-2">Conecte-se conosco</h3>
@@ -94,7 +100,7 @@ const Footer = () => {
                     </motion.div>
                 </div>
             </div>
-        </motion.footer>
+        </motion.footer >
     );
 };
 
