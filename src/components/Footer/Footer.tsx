@@ -45,7 +45,7 @@ const Footer = () => {
             initial="hidden"
             animate="visible"
             variants={containerAnimation}
-            className={shouldHideFooter ? "bg-slate-100 text-gray-900 py-4 fixed bottom-0 w-full" : "bg-slate-100 text-gray-900 py-4 mt-auto w-full"}
+            className={shouldHideFooter ? "bg-slate-100 text-gray-900 py-4 absolute bottom-0 w-full" : "bg-slate-100 text-gray-900 py-4 mt-auto w-full"}
         >
             <div className="container mx-auto">
                 <div className="flex flex-col md:flex-row justify-between items-center gap-6">
