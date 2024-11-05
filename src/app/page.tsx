@@ -3,7 +3,7 @@
 import React from 'react';
 import { NextPage } from 'next';
 import { motion } from 'framer-motion';
-import { CheckCircleIcon, LightbulbIcon, ClockIcon, UsersIcon } from 'lucide-react';
+import { CheckCircleIcon, LightbulbIcon, ClockIcon, UsersIcon, BookOpenIcon, StarIcon, GraduationCapIcon, TargetIcon, AwardIcon, LineChartIcon, BookmarkIcon, MessageSquareIcon } from 'lucide-react';
 
 const Home: NextPage = () => {
     const containerVariants = {
@@ -43,7 +43,7 @@ const Home: NextPage = () => {
                     </motion.a>
                 </section>
 
-                <section className="flex flex-col justify-center items-center p-8 mb-16">
+                <section className="flex flex-col justify-center items-center">
                     <motion.h2 variants={itemVariants} className="text-2xl md:text-3xl font-bold mb-8 mt-20 text-center">
                         Principais Benefícios
                     </motion.h2>

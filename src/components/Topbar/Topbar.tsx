@@ -64,13 +64,13 @@ const Topbar: React.FC = () => {
                                 </Button>
                             </DropdownMenuTrigger>
                             <DropdownMenuContent>
-                                <Link href="/perfil" passHref>
-                                    <DropdownMenuItem><User />{" "}Acessar Perfil</DropdownMenuItem>
+                                <Link href="/perfil" passHref >
+                                    <DropdownMenuItem className="cursor-pointer"><User />{" "}Acessar Perfil</DropdownMenuItem>
                                 </Link>
-                                <Link href="/admin" passHref>
-                                    <DropdownMenuItem><Settings />{" "}Acessar Administração</DropdownMenuItem>
+                                <Link href="/admin" passHref >
+                                    <DropdownMenuItem className="cursor-pointer"><Settings />{" "}Acessar Administração</DropdownMenuItem>
                                 </Link>
-                                <DropdownMenuItem onClick={handleLogout}><LogOut />{" "}Logout</DropdownMenuItem>
+                                <DropdownMenuItem onClick={handleLogout} className="cursor-pointer"><LogOut />{" "}Logout</DropdownMenuItem>
                             </DropdownMenuContent>
                         </DropdownMenu>
                     </div>
@@ -83,15 +83,15 @@ const Topbar: React.FC = () => {
                         <Link href="/" className="text-black hover:text-violet-600 font-semibold">
                             Inicio
                         </Link>
-                        <Link href="/tutor/lista" className="text-black hover:text-violet-600 font-semibold">
+                        <Link href="/tutor/lista" className="text-black hover:text-violet-600 font-semibold cursor-pointer">
                             Encontrar tutores
                         </Link>
 
-                        <Link href="/perfil" className="text-black hover:text-violet-600 font-semibold">
+                        <Link href="/perfil" className="text-black hover:text-violet-600 font-semibold cursor-pointer">
                             Acessar Perfil
                         </Link>
 
-                        <Link href="/tutor/candidatura" className="bg-violet-700 text-white px-6 py-3 rounded-2xl hover:text-violet-600 transition duration-300 text-center font-semibold">
+                        <Link href="/tutor/candidatura" className="bg-violet-700 text-white px-6 py-3 rounded-2xl hover:text-violet-600 transition duration-300 text-center font-semibold cursor-pointer">
                             Tornar-se Tutor
                         </Link>
 

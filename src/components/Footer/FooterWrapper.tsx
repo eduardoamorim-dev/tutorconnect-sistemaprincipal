@@ -5,7 +5,7 @@ import Footer from "./Footer";
 
 const FooterWrapper = () => {
     const pathname = usePathname();
-    const hideFooterRoutes = ["/sign-in", "/sign-up", "/perfil"];
+    const hideFooterRoutes = ["/sign-in", "/sign-up"];
 
     const shouldHideFooter = hideFooterRoutes.includes(pathname) || pathname.startsWith("/admin");
 

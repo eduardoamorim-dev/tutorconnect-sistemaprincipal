@@ -39,14 +39,13 @@ const profileSchema = z.object({
 
 type ProfileFormData = z.infer<typeof profileSchema>;
 
-// Mock do usuário
 const mockUser = {
     name: "João da Silva",
     email: "joao@email.com",
     escolaridade: "graduacao" as const,
     curso: "analiseedesenvolvimentodesistemas",
     bio: "Estudante de ADS apaixonado por tecnologia e desenvolvimento web.",
-    avatarUrl: "", // URL vazia para simular sem foto
+    avatarUrl: "",
 };
 
 export default function Profile() {
@@ -73,7 +72,7 @@ export default function Profile() {
     };
 
     return (
-        <div className="min-h-screen bg-slate flex items-center justify-center p-4">
+        <div className="bg-slate flex items-center justify-center mt-16">
             <Card className="w-full max-w-3xl">
                 <CardHeader>
                     <CardTitle className="text-2xl font-bold text-center text-violet-700">
