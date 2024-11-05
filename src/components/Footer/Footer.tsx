@@ -1,16 +1,12 @@
+"use client"
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Instagram } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-import { usePathname } from "next/navigation";
-
 const Footer = () => {
     const currentYear = new Date().getFullYear();
-    const pathname = usePathname();
-
-    const changeClassName = ["/"];
-    const shouldHideFooter = changeClassName.includes(pathname);
 
     const linkedin = { href: 'https://www.linkedin.com/in/eduardoamorim-dev/' }
 
@@ -20,11 +16,6 @@ const Footer = () => {
             icon: <Instagram className="w-5 h-5" />,
             href: 'https://instagram.com/seuuser',
         },
-        // {
-        //     name: 'Discord',
-        //     icon: <Discord className="w-5 h-5" />,
-        //     href: 'https://discord.gg/seuserver',
-        // },
     ];
 
     const containerAnimation = {
@@ -49,12 +40,12 @@ const Footer = () => {
             initial="hidden"
             animate="visible"
             variants={containerAnimation}
-            className={shouldHideFooter ? "bg-slate-100 text-gray-900 py-0 fixed bottom-0 w-full" : "bg-slate-100 text-gray-900 py-0 fixed bottom-0 w-full"}
+            className="bg-slate-100 text-gray-900 py-4 mt-auto w-full"
         >
-            <div className="container mx-auto ">
+            <div className="container mx-auto">
                 <div className="flex flex-col md:flex-row justify-between items-center gap-6">
                     <motion.div variants={itemAnimation}>
-                        <h3 className="text-xl font-semibold mt-2">Conecte-se conosco</h3>
+                        <h3 className="text-xl font-semibold">Conecte-se conosco</h3>
                         <div className="flex gap-4">
                             {socialLinks.map((link) => (
                                 <Button
@@ -100,7 +91,7 @@ const Footer = () => {
                     </motion.div>
                 </div>
             </div>
-        </motion.footer >
+        </motion.footer>
     );
 };
 

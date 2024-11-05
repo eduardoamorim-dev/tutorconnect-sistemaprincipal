@@ -19,9 +19,11 @@ export default function RootLayout({
             <head>
                 <link rel="icon" href="/favicon.png" />
             </head>
-            <body className="flex-1 flex-column space-between h-screen antialiased">
+            <body className="min-h-screen flex flex-col">
                 <TopbarWrapper />
-                {children}
+                <main className="flex-1">
+                    {children}
+                </main>
                 <FooterWrapper />
             </body>
         </html>

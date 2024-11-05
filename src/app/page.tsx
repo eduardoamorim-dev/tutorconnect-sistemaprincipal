@@ -5,9 +5,6 @@ import { NextPage } from 'next';
 import { motion } from 'framer-motion';
 import { CheckCircleIcon, LightbulbIcon, ClockIcon, UsersIcon } from 'lucide-react';
 
-import Footer from '@/components/Footer/Footer';
-
-
 const Home: NextPage = () => {
     const containerVariants = {
         hidden: { opacity: 0 },
@@ -23,9 +20,7 @@ const Home: NextPage = () => {
     };
 
     return (
-        <div className="flex flex-col min-h-screen  overflow-hidden">
-
-
+        <div className="flex flex-col min-h-screen">
             <motion.div
                 className="flex-1"
                 initial="hidden"
@@ -47,7 +42,8 @@ const Home: NextPage = () => {
                         Encontrar Tutor
                     </motion.a>
                 </section>
-                <section className="flex-grow flex-1 flex flex-col justify-center items-center p-8">
+
+                <section className="flex flex-col justify-center items-center p-8 mb-16">
                     <motion.h2 variants={itemVariants} className="text-2xl md:text-3xl font-bold mb-8 mt-20 text-center">
                         Principais Benefícios
                     </motion.h2>
