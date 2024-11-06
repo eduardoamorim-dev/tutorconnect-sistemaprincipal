@@ -5,13 +5,8 @@ import { motion } from 'framer-motion';
 import { Instagram } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-import { usePathname } from "next/navigation";
-
 const Footer = () => {
     const currentYear = new Date().getFullYear();
-    const pathname = usePathname();
-    const changeClassName = ["/"];
-    const shouldHideFooter = changeClassName.includes(pathname);
 
     const linkedin = { href: 'https://www.linkedin.com/in/eduardoamorim-dev/' }
 
@@ -45,7 +40,7 @@ const Footer = () => {
             initial="hidden"
             animate="visible"
             variants={containerAnimation}
-            className={shouldHideFooter ? "bg-slate-100 text-gray-900 py-4 absolute bottom-0 w-full" : "bg-slate-100 text-gray-900 py-4 mt-auto w-full"}
+            className="bg-slate-100 text-gray-900 py-4 mt-auto w-full"
         >
             <div className="container mx-auto">
                 <div className="flex flex-col md:flex-row justify-between items-center gap-6">

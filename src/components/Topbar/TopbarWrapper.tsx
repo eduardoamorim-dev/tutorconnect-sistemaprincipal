@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 
 const TopbarWrapper = () => {
     const pathname = usePathname();
-    const hideTopbarRoutes = ["/sign-in", "/sign-up", "/"];
+    const hideTopbarRoutes = ["/sign-in", "/sign-up"];
 
     const isAdminRoute = pathname.includes('/admin');
 
