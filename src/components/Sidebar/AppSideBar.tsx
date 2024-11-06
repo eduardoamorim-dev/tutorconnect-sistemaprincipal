@@ -22,6 +22,11 @@ const items = [
         icon: Home,
     },
     {
+        title: "Gerenciar Usuarios",
+        url: "/admin/usuarios",
+        icon: UserCog,
+    },
+    {
         title: "Gerenciar Tutores",
         url: "/admin/tutores/gerenciar",
         icon: UserCog,
