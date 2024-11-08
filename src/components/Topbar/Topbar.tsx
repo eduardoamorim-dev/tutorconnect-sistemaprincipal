@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from '@/components/ui/dropdown-menu';
-import { User, Menu, X, LogOut, UserCog, Settings, GraduationCap } from 'lucide-react';
+import { User, Menu, X, LogOut, UserCog, Settings, GraduationCap, CalendarIcon } from 'lucide-react';
 import { Separator } from '../ui/separator';
 
 
@@ -67,6 +67,9 @@ const Topbar: React.FC = () => {
                                 <Link href="/perfil" passHref >
                                     <DropdownMenuItem className="cursor-pointer"><User />{" "}Acessar Perfil</DropdownMenuItem>
                                 </Link>
+                                <Link href="/tutor/agenda" passHref >
+                                    <DropdownMenuItem className="cursor-pointer"><CalendarIcon />{" "}Gerenciar Agenda</DropdownMenuItem>
+                                </Link>
                                 <Link href="/admin" passHref >
                                     <DropdownMenuItem className="cursor-pointer"><Settings />{" "}Acessar Administração</DropdownMenuItem>
                                 </Link>
@@ -80,18 +83,22 @@ const Topbar: React.FC = () => {
                 <div className={`lg:hidden ${isMenuOpen ? 'block' : 'hidden'} pt-4`}>
                     <Separator className="mb-5" />
                     <div className="flex flex-col space-y-4">
-                        <Link href="https://tutorconnect-eight.vercel.app/" className="text-black hover:text-violet-600 font-semibold">
+                        <Link href="https://tutorconnect-eight.vercel.app/" passHref className="text-black hover:text-violet-600 font-semibold">
                             Inicio
                         </Link>
-                        <Link href="/" className="text-black hover:text-violet-600 font-semibold cursor-pointer">
+                        <Link href="/" passHref className="text-black hover:text-violet-600 font-semibold cursor-pointer">
                             Encontrar tutores
                         </Link>
 
-                        <Link href="/perfil" className="text-black hover:text-violet-600 font-semibold cursor-pointer">
+                        <Link href="/perfil" passHref className="text-black hover:text-violet-600 font-semibold cursor-pointer">
                             Acessar Perfil
                         </Link>
 
-                        <Link href="/tutor/candidatura" className="bg-violet-700 text-white px-6 py-3 rounded-2xl hover:text-violet-600 transition duration-300 text-center font-semibold cursor-pointer">
+                        <Link href="/tutor/agenda" passHref className="text-black hover:text-violet-600 font-semibold cursor-pointer" >
+                            Gerenciar Agenda
+                        </Link>
+
+                        <Link href="/tutor/candidatura" passHref className="bg-violet-700 text-white px-6 py-3 rounded-2xl hover:text-violet-600 transition duration-300 text-center font-semibold cursor-pointer">
                             Tornar-se Tutor
                         </Link>
 
