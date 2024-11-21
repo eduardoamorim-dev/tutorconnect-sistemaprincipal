@@ -46,7 +46,7 @@ const Topbar: React.FC = () => {
 
                     {/* Desktop Navigation */}
                     <div className="hidden lg:flex items-center space-x-4">
-                        <Link href="https://tutorconnect-eight.vercel.app" className="text-black hover:text-violet-600 font-semibold">
+                        <Link href="https://tutorconnect-br.vercel.app" className="text-black hover:text-violet-600 font-semibold">
                             Inicio
                         </Link>
                         <Link href="/" className="text-black hover:text-violet-600 font-semibold">
@@ -83,7 +83,7 @@ const Topbar: React.FC = () => {
                 <div className={`lg:hidden ${isMenuOpen ? 'block' : 'hidden'} pt-4`}>
                     <Separator className="mb-5" />
                     <div className="flex flex-col space-y-4">
-                        <Link href="https://tutorconnect-eight.vercel.app/" passHref className="text-black hover:text-violet-600 font-semibold">
+                        <Link href="https://tutorconnect-br.vercel.app/" passHref className="text-black hover:text-violet-600 font-semibold">
                             Inicio
                         </Link>
                         <Link href="/" passHref className="text-black hover:text-violet-600 font-semibold cursor-pointer">
