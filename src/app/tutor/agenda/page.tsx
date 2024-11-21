@@ -109,7 +109,7 @@ const AgendaManager = () => {
                         <CardHeader>
                             <CardTitle className="text-violet-700">Horários Agendados</CardTitle>
                         </CardHeader>
-                        <CardContent>
+                        <CardContent className="h-full">
                             <ScheduleList
                                 schedules={schedules}
                                 onEdit={handleEdit}
@@ -210,7 +210,7 @@ const ScheduleList = ({ schedules, onEdit, onDelete }) => {
     }
 
     return (
-        <div className="grid gap-3 max-h-[400px] overflow-y-auto pr-2">
+        <div className="grid gap-3 max-h-[550px] overflow-y-auto pr-2">
             {schedules.map((schedule, index) => (
                 <Card key={index} className="border border-violet-100 shrink-0">
                     <CardContent className="flex justify-between items-center p-4">
