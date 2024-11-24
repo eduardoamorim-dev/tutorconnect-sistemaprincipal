@@ -66,7 +66,6 @@ const SearchTutor = () => {
                 <div className="container mx-auto py-5">
                     <h1 className="text-3xl font-bold py-4 text-left">Tutores Disponíveis</h1>
 
-                    {/* Filtros */}
                     <div className="flex flex-col md:flex-row gap-4 mb-8 gap-x-4">
                         <Input
                             type="text"
