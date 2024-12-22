@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Calendar, Clock, Check } from 'lucide-react';
+import React, { useState } from "react";
+import { Calendar, Clock, Check } from "lucide-react";
 
 const SchudeleModal = () => {
     const [selectedDate, setSelectedDate] = useState(String);
@@ -7,9 +7,9 @@ const SchudeleModal = () => {
 
     // Simulação de slots disponíveis
     const availableSlots = [
-        { date: '2024-10-06', times: ['10:00', '14:00', '16:00'] },
-        { date: '2024-10-07', times: ['09:00', '13:00', '15:00'] },
-        { date: '2024-10-08', times: ['11:00', '14:00', '17:00'] },
+        { date: "2024-10-06", times: ["10:00", "14:00", "16:00"] },
+        { date: "2024-10-07", times: ["09:00", "13:00", "15:00"] },
+        { date: "2024-10-08", times: ["11:00", "14:00", "17:00"] },
     ];
 
     const handleDateSelect = (date: string) => {
@@ -35,12 +35,15 @@ const SchudeleModal = () => {
                 <div>
                     <h3 className="font-medium mb-2">Selecione uma data:</h3>
                     <div className="space-y-2">
-                        {availableSlots.map(slot => (
+                        {availableSlots.map((slot) => (
                             <button
                                 key={slot.date}
                                 onClick={() => handleDateSelect(slot.date)}
-                                className={`w-full p-2 text-left rounded ${selectedDate === slot.date ? 'bg-violet-100 text-violet-700' : 'bg-gray-100'
-                                    }`}
+                                className={`w-full p-2 text-left rounded ${
+                                    selectedDate === slot.date
+                                        ? "bg-violet-100 text-violet-700"
+                                        : "bg-gray-100"
+                                }`}
                             >
                                 {slot.date}
                             </button>
@@ -51,16 +54,23 @@ const SchudeleModal = () => {
                 <div>
                     <h3 className="font-medium mb-2">Horários disponíveis:</h3>
                     <div className="space-y-2">
-                        {selectedDate && availableSlots.find(slot => slot.date === selectedDate)?.times.map(time => (
-                            <button
-                                key={time}
-                                onClick={() => handleTimeSelect(time)}
-                                className={`w-full p-2 text-left rounded flex items-center ${selectedTime === time ? 'bg-violet-100 text-violet-700' : 'bg-gray-100'
-                                    }`}
-                            >
-                                <Clock size={16} className="mr-2" /> {time}
-                            </button>
-                        ))}
+                        {selectedDate &&
+                            availableSlots
+                                .find((slot) => slot.date === selectedDate)
+                                ?.times.map((time) => (
+                                    <button
+                                        key={time}
+                                        onClick={() => handleTimeSelect(time)}
+                                        className={`w-full p-2 text-left rounded flex items-center ${
+                                            selectedTime === time
+                                                ? "bg-violet-100 text-violet-700"
+                                                : "bg-gray-100"
+                                        }`}
+                                    >
+                                        <Clock size={16} className="mr-2" />{" "}
+                                        {time}
+                                    </button>
+                                ))}
                     </div>
                 </div>
             </div>

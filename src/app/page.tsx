@@ -4,7 +4,13 @@ import React, { useState, useEffect } from "react";
 
 import { tutors } from "@/types/tutor";
 import { Input } from "@/components/ui/input";
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
+import {
+    Select,
+    SelectTrigger,
+    SelectValue,
+    SelectContent,
+    SelectItem,
+} from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 
 import TutorCard from "@/components/TutorCard/TutorCard";
@@ -25,19 +31,30 @@ const SearchTutor = () => {
             setLoading(false);
         }, 2000);
 
-        const uniqueCourses = Array.from(new Set(tutors.map(tutor => tutor.course)));
+        const uniqueCourses = Array.from(
+            new Set(tutors.map((tutor) => tutor.course))
+        );
         setCourses(uniqueCourses);
 
         return () => clearTimeout(timer);
     }, []);
 
-    const filteredTutors = tutors.filter(tutor => {
-        const matchesSearch = tutor.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            tutor.subjects.some(subject => subject.toLowerCase().includes(searchTerm.toLowerCase()));
+    const filteredTutors = tutors.filter((tutor) => {
+        const matchesSearch =
+            tutor.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            tutor.subjects.some((subject) =>
+                subject.toLowerCase().includes(searchTerm.toLowerCase())
+            );
 
-        const matchesEducationLevel = educationLevel ? (educationLevel === "graduacao" ? tutor.level === "graduacao" : tutor.level === "ensino_medio") : true;
+        const matchesEducationLevel = educationLevel
+            ? educationLevel === "graduacao"
+                ? tutor.level === "graduacao"
+                : tutor.level === "ensino_medio"
+            : true;
 
-        const matchesCourse = selectedCourse ? tutor.course === selectedCourse : true;
+        const matchesCourse = selectedCourse
+            ? tutor.course === selectedCourse
+            : true;
 
         return matchesSearch && matchesEducationLevel && matchesCourse;
     });
@@ -56,7 +73,8 @@ const SearchTutor = () => {
                 <div className="flex justify-center px-4 sm:px-6 lg:px-8">
                     <div className="text-center">
                         <h1 className="text-lg sm:text-xl lg:text-2xl font-semibold mt-8 sm:mt-12 lg:mt-16 max-w-3xl mx-auto">
-                            Conecte-se com tutores: aprendizado de estudante para estudante
+                            Conecte-se com tutores: aprendizado de estudante
+                            para estudante
                         </h1>
                     </div>
                 </div>
@@ -64,7 +82,9 @@ const SearchTutor = () => {
 
             <div className="bg-slate-50 pb-24 mt-10">
                 <div className="container mx-auto py-5">
-                    <h1 className="text-3xl font-bold py-4 text-left">Tutores Disponíveis</h1>
+                    <h1 className="text-3xl font-bold py-4 text-left">
+                        Tutores Disponíveis
+                    </h1>
 
                     {/* Filtros */}
                     <div className="flex flex-col md:flex-row gap-4 mb-8 gap-x-4">
@@ -78,20 +98,30 @@ const SearchTutor = () => {
 
                         {/* Seleção de Graduação ou Ensino Médio */}
                         <div className="w-56">
-                            <Select value={educationLevel} onValueChange={setEducationLevel}>
+                            <Select
+                                value={educationLevel}
+                                onValueChange={setEducationLevel}
+                            >
                                 <SelectTrigger>
                                     <SelectValue placeholder="Selecionar Nível de Ensino" />
                                 </SelectTrigger>
                                 <SelectContent>
-                                    <SelectItem value="graduacao">Graduação</SelectItem>
-                                    <SelectItem value="ensino_medio">Ensino Médio</SelectItem>
+                                    <SelectItem value="graduacao">
+                                        Graduação
+                                    </SelectItem>
+                                    <SelectItem value="ensino_medio">
+                                        Ensino Médio
+                                    </SelectItem>
                                 </SelectContent>
                             </Select>
                         </div>
 
                         {/* Seleção de Curso */}
                         <div className="w-48">
-                            <Select value={selectedCourse} onValueChange={setSelectedCourse}>
+                            <Select
+                                value={selectedCourse}
+                                onValueChange={setSelectedCourse}
+                            >
                                 <SelectTrigger>
                                     <SelectValue placeholder="Selecionar Curso" />
                                 </SelectTrigger>
@@ -107,7 +137,10 @@ const SearchTutor = () => {
 
                         {isFilterApplied && (
                             <div className="flex-none">
-                                <Button onClick={clearFilters} className="bg-red-600 hover:bg-red-500">
+                                <Button
+                                    onClick={clearFilters}
+                                    className="bg-red-600 hover:bg-red-500"
+                                >
                                     Limpar Filtros
                                 </Button>
                             </div>
@@ -137,7 +170,9 @@ const SearchTutor = () => {
             {isModalOpen && (
                 <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
                     <div className="bg-white p-6 rounded-lg shadow-md">
-                        <h2 className="text-xl font-semibold mb-4">Agendar Tutoria com {selectedTutor?.name}</h2>
+                        <h2 className="text-xl font-semibold mb-4">
+                            Agendar Tutoria com {selectedTutor?.name}
+                        </h2>
                         <SchudeleModal />
                         <button
                             onClick={() => setIsModalOpen(false)}
@@ -149,7 +184,7 @@ const SearchTutor = () => {
                 </div>
             )}
         </>
-    )
-}
+    );
+};
 
 export default SearchTutor;
