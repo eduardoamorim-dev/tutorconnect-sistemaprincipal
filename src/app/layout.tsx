@@ -3,6 +3,7 @@ import "./globals.css";
 
 import TopbarWrapper from "@/components/Topbar/TopbarWrapper";
 import FooterWrapper from "@/components/Footer/FooterWrapper";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
     title: "Tutor Connect",
@@ -23,6 +24,7 @@ export default function RootLayout({
                 <TopbarWrapper />
                 <main className="flex-1">{children}</main>
                 <FooterWrapper />
+                <Toaster richColors />
             </body>
         </html>
     );

@@ -297,7 +297,8 @@ export default function SignUp() {
 
                     {accountSelecionado === "TUTOR" && (
                         <div>
-x                            <FormField
+                            {" "}
+                            <FormField
                                 control={form.control}
                                 name="scheduleUrl"
                                 render={({ field }) => (
@@ -322,7 +323,7 @@ x                            <FormField
                                                                             .value
                                                                     )
                                                                 }
-                                                                placeholder="username"
+                                                                placeholder="digite o mesmo usuário criado"
                                                                 className="flex-1"
                                                             />
                                                         </div>
@@ -392,8 +393,7 @@ x                            <FormField
                                                         }}
                                                         className="bg-violet-700 text-white text-sm font-semibold py-3 rounded-2xl hover:bg-violet-500 transition duration-300"
                                                     >
-                                                        Definir usuário e
-                                                        disponibilidade
+                                                        Iniciar
                                                     </Button>
                                                 )}
                                             </div>
@@ -402,7 +402,6 @@ x                            <FormField
                                     </FormItem>
                                 )}
                             />
-
                             <Separator className="mt-7" />
                         </div>
                     )}

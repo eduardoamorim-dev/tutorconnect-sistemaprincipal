@@ -1,8 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-
-import { tutors } from "@/types/tutor";
 import { Input } from "@/components/ui/input";
 import {
     Select,
@@ -12,63 +10,98 @@ import {
     SelectItem,
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
-
+import { AccountType, SchoolLevel, User } from "@prisma/client";
 import TutorCard from "@/components/TutorCard/TutorCard";
-import SchudeleModal from "@/components/SchudeleModal/SchudeleModal";
+import axios from "axios";
+import { toast, Toaster } from "sonner";
+import { formatCourseName } from "@/utils/formatters";
 
 const SearchTutor = () => {
     const [loading, setLoading] = useState(true);
     const [searchTerm, setSearchTerm] = useState("");
-    const [educationLevel, setEducationLevel] = useState("");
+    const [selectedLevel, setSelectedLevel] = useState<string>("");
     const [selectedCourse, setSelectedCourse] = useState("");
     const [courses, setCourses] = useState<string[]>([]);
-
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [selectedTutor, setSelectedTutor] = useState(null);
+    const [tutors, setTutors] = useState<User[]>([]);
 
     useEffect(() => {
-        const timer = setTimeout(() => {
-            setLoading(false);
-        }, 2000);
+        const fetchTutors = async () => {
+            try {
+                const response = await axios.get<User[]>("/api/tutors");
+                const tutorsData = response.data;
 
-        const uniqueCourses = Array.from(
-            new Set(tutors.map((tutor) => tutor.course))
-        );
-        setCourses(uniqueCourses);
+                setTutors(tutorsData);
 
-        return () => clearTimeout(timer);
+                // Corrigindo a tipagem do array de cursos e removendo duplicatas
+                const uniqueCourses = Array.from(
+                    new Set(tutorsData.map((tutor: User) => tutor.curso))
+                )
+                    .filter((curso): curso is string => curso !== null)
+                    .sort((a, b) =>
+                        formatCourseName(a).localeCompare(formatCourseName(b))
+                    ); // Ordenando alfabeticamente
+
+                setCourses(uniqueCourses);
+            } catch (error) {
+                console.error("Error fetching tutors:", error);
+                toast.error(
+                    "Não foi possível carregar os tutores. Tente novamente mais tarde."
+                );
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchTutors();
     }, []);
 
     const filteredTutors = tutors.filter((tutor) => {
+        if (tutor.tipoconta !== AccountType.TUTOR) return false;
+
         const matchesSearch =
             tutor.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            tutor.subjects.some((subject) =>
-                subject.toLowerCase().includes(searchTerm.toLowerCase())
+            tutor.disciplines.some((discipline) =>
+                discipline.toLowerCase().includes(searchTerm.toLowerCase())
             );
 
-        const matchesEducationLevel = educationLevel
-            ? educationLevel === "graduacao"
-                ? tutor.level === "graduacao"
-                : tutor.level === "ensino_medio"
+        const matchesLevel = selectedLevel
+            ? tutor.escolaridade === selectedLevel
             : true;
 
         const matchesCourse = selectedCourse
-            ? tutor.course === selectedCourse
+            ? tutor.curso === selectedCourse
             : true;
 
-        return matchesSearch && matchesEducationLevel && matchesCourse;
+        return matchesSearch && matchesLevel && matchesCourse;
     });
 
     const clearFilters = () => {
         setSearchTerm("");
-        setEducationLevel("");
+        setSelectedLevel("");
         setSelectedCourse("");
     };
 
-    const isFilterApplied = searchTerm || educationLevel || selectedCourse;
+    const isFilterApplied = searchTerm || selectedLevel || selectedCourse;
+
+    if (loading) {
+        return (
+            <div className="flex justify-center items-center min-h-screen">
+                <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-violet-700" />
+            </div>
+        );
+    }
+
+    const formatSchoolLevel = (level: SchoolLevel) => {
+        const levelMap = {
+            [SchoolLevel.ENSINOMEDIO]: "Ensino Médio",
+            [SchoolLevel.GRADUACAO]: "Graduação",
+        };
+        return levelMap[level];
+    };
 
     return (
         <>
+            <Toaster richColors position="top-right" />
             <div className="flex justify-center">
                 <div className="flex justify-center px-4 sm:px-6 lg:px-8">
                     <div className="text-center">
@@ -86,49 +119,46 @@ const SearchTutor = () => {
                         Tutores Disponíveis
                     </h1>
 
-                    {/* Filtros */}
-                    <div className="flex flex-col md:flex-row gap-4 mb-8 gap-x-4">
+                    <div className="flex flex-col md:flex-row gap-4 mb-8">
                         <Input
                             type="text"
-                            placeholder="Buscar por nome da disciplina ou tutor"
+                            placeholder="Buscar por nome do tutor ou disciplina"
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
                             className="flex-none w-80 md:w-96"
                         />
 
-                        {/* Seleção de Graduação ou Ensino Médio */}
                         <div className="w-56">
                             <Select
-                                value={educationLevel}
-                                onValueChange={setEducationLevel}
+                                value={selectedLevel}
+                                onValueChange={setSelectedLevel}
                             >
                                 <SelectTrigger>
-                                    <SelectValue placeholder="Selecionar Nível de Ensino" />
+                                    <SelectValue placeholder="Nível de Ensino" />
                                 </SelectTrigger>
                                 <SelectContent>
-                                    <SelectItem value="graduacao">
+                                    <SelectItem value={SchoolLevel.GRADUACAO}>
                                         Graduação
                                     </SelectItem>
-                                    <SelectItem value="ensino_medio">
+                                    <SelectItem value={SchoolLevel.ENSINOMEDIO}>
                                         Ensino Médio
                                     </SelectItem>
                                 </SelectContent>
                             </Select>
                         </div>
 
-                        {/* Seleção de Curso */}
-                        <div className="w-48">
+                        <div className="w-72">
                             <Select
                                 value={selectedCourse}
                                 onValueChange={setSelectedCourse}
                             >
                                 <SelectTrigger>
-                                    <SelectValue placeholder="Selecionar Curso" />
+                                    <SelectValue placeholder="Curso" />
                                 </SelectTrigger>
                                 <SelectContent>
                                     {courses.map((course, index) => (
                                         <SelectItem key={index} value={course}>
-                                            {course}
+                                            {formatCourseName(course)}
                                         </SelectItem>
                                     ))}
                                 </SelectContent>
@@ -136,53 +166,52 @@ const SearchTutor = () => {
                         </div>
 
                         {isFilterApplied && (
-                            <div className="flex-none">
-                                <Button
-                                    onClick={clearFilters}
-                                    className="bg-red-600 hover:bg-red-500"
-                                >
-                                    Limpar Filtros
-                                </Button>
-                            </div>
+                            <Button
+                                onClick={clearFilters}
+                                variant="destructive"
+                                className="flex-none"
+                            >
+                                Limpar Filtros
+                            </Button>
                         )}
                     </div>
 
-                    <div className="flex justify-center">
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                            {filteredTutors.map((tutor) => (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                        {filteredTutors.length > 0 ? (
+                            filteredTutors.map((tutor) => (
                                 <TutorCard
                                     key={tutor.id}
                                     name={tutor.name}
-                                    course={tutor.course}
-                                    subjects={tutor.subjects}
-                                    avatarUrl={tutor.avatarUrl}
-                                    onCheckSchedule={() => {
-                                        setSelectedTutor(tutor);
-                                        setIsModalOpen(true);
-                                    }}
+                                    curso={tutor.curso}
+                                    tipoconta={tutor.tipoconta}
+                                    disciplines={tutor.disciplines}
+                                    scheduleUrl={tutor.scheduleUrl || undefined}
+                                    escolaridade={tutor.escolaridade}
+                                    onCheckSchedule={(url) =>
+                                        window.open(url, "_blank")
+                                    }
                                 />
-                            ))}
-                        </div>
+                            ))
+                        ) : (
+                            <div className="col-span-full flex flex-col items-center justify-center py-8 text-gray-500">
+                                <p className="text-lg">
+                                    Nenhum tutor encontrado com os filtros
+                                    selecionados.
+                                </p>
+                                {isFilterApplied && (
+                                    <Button
+                                        onClick={clearFilters}
+                                        variant="link"
+                                        className="mt-2 text-violet-600"
+                                    >
+                                        Limpar filtros e tentar novamente
+                                    </Button>
+                                )}
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>
-
-            {isModalOpen && (
-                <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
-                    <div className="bg-white p-6 rounded-lg shadow-md">
-                        <h2 className="text-xl font-semibold mb-4">
-                            Agendar Tutoria com {selectedTutor?.name}
-                        </h2>
-                        <SchudeleModal />
-                        <button
-                            onClick={() => setIsModalOpen(false)}
-                            className="mt-4 bg-red-600 text-white px-4 py-2 rounded-full"
-                        >
-                            Fechar
-                        </button>
-                    </div>
-                </div>
-            )}
         </>
     );
 };
